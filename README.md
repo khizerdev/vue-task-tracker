@@ -1,7 +1,16 @@
 # Vue Task Tracker
 
-![alt text](https://github.com/khizerdev/vue-task-tracker/blob/main/image.jpg?raw=true)
+Features
 
+* Add task
+* Delete task
+* Mark task as completed
+
+![alt text](https://github.com/khizerdev/vue-task-tracker/blob/main/src/assets/List.PNG)
+
+Form
+
+![alt text](https://github.com/khizerdev/vue-task-tracker/blob/main/src/assets/Form.PNG)
 
 ## Project setup
 ```
