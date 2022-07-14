@@ -1,4 +1,7 @@
-# vue-task-tracker
+# Vue Task Tracker
+
+![alt text](https://github.com/khizerdev/vue-task-tracker/blob/main/image.jpg?raw=true)
+
 
 ## Project setup
 ```

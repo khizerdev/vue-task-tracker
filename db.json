@@ -1,28 +1,10 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "title": "Drink",
-      "date": "2022-06-12",
-      "completed": false
-    },
-    {
-      "id": 2,
-      "title": "Cricket",
-      "date": "2022-06-12",
-      "completed": true
-    },
-    {
       "id": 88,
       "title": "Doctor Appointment",
       "date": "2022-07-16",
       "completed": false
-    },
-    {
-      "title": "Outing",
-      "date": "2022-07-14",
-      "completed": false,
-      "id": 89
     }
   ]
 }
