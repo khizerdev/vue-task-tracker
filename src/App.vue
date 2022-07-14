@@ -27,13 +27,13 @@ export default {
         id: 1,
         title: "Drink",
         day: "2022-06-12",
-        completed: false
+        completed: true
       },
       {
         id: 2,
         title: "Cricket",
         day: "2022-06-12",
-        completed: true
+        completed: false
       },
       {
         id: 1,

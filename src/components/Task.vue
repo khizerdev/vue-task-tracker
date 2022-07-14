@@ -1,9 +1,9 @@
 <template>
-    <div>
-           <h3>
-            {{ task.title }}
-  
-            </h3>
+    <div :class="[task.completed ? 'completed' : '' , 'task']">
+        <h3>
+        {{ task.title }}
+        <i class="fas fa-times"></i>
+        </h3>
         <p>{{ task.day }}</p>
     </div>
 </template>
@@ -28,7 +28,7 @@ export default {
   padding: 10px 20px;
   cursor: pointer;
 }
-.task.reminder {
+.task.completed {
   border-left: 5px solid green;
 }
 .task h3 {
