@@ -28,25 +28,73 @@ export default {
       showAddForm: false
     }
   },
-  created() {
-    this.tasks = [
-      
-    ]
+  async created() {
+    this.tasks = await this.fetchTasks()
   },
   methods: {
-    deleteTask(id) {
+    async deleteTask(id) {
       if(confirm('Are you sure ?')) {
-        this.tasks = this.tasks.filter((task) => task.id !== id)
+
+        const res = await fetch('api/tasks/'+id , {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json',
+        }
+      });
+        res.status == 200 ? this.tasks = this.tasks.filter((task) => task.id !== id) : alert("Something went wrong");
+        
       }
     },
-    toggleCompleted(id){
-      this.tasks = this.tasks.map((task) => task.id === id ? {...task , completed:!task.completed} : task)
+
+
+    async toggleCompleted(id){
+
+      const result = await this.fetchTask(id);
+      const update = {...result , completed: !result.completed}
+
+      const res = await fetch('api/tasks/'+id , {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(update)
+      });
+
+      const data = await res.json();
+      console.log(data)
+
+      this.tasks = this.tasks.map((task) => task.id === id ? {...task , completed:data.completed} : task)
     },
-    addTask(task) {
-      this.tasks = [...this.tasks , task]
+
+
+    async addTask(task) {
+
+      const res = await fetch('api/tasks' , {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(task)
+      });
+
+      const data = await res.json();
+
+      this.tasks = [...this.tasks , data]
     },
     toggleForm() {
       this.showAddForm = !this.showAddForm
+    },
+    async fetchTasks(){
+      let res = await fetch('api/tasks')
+      const data = res.json()
+   
+      return data;
+    },
+    async fetchTask(id){
+      let res = await fetch('api/tasks/'+id)
+      const data = res.json()
+   
+      return data;
     }
   }
 }

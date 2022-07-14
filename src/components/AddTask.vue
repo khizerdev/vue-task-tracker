@@ -39,7 +39,7 @@ export default {
     }
 
     const newTask = {
-        id: Math.floor(Math.random() * 150),
+        // id: Math.floor(Math.random() * 150),
         title: this.title,
         date: this.date,
         completed: this.completed,
