@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <Header title="Task Tracker"/>
+    <AddTask @add-task="addTask"/>
     <Tasks @toggle-completed="toggleCompleted" @delete-task="deleteTask" :tasks="tasks"/>
   </div>
 </template>
@@ -9,14 +10,16 @@
 
 import Header from './components/Header.vue'
 import Tasks from './components/Tasks.vue'
+import AddTask from './components/AddTask.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
-    Tasks
+    Tasks,
+    AddTask
   },
-  emits: ["delete-task","toggle-completed"],
+  emits: ["delete-task","toggle-completed",'add-task'],
   data() {
     return {
       tasks : []
@@ -27,19 +30,19 @@ export default {
       {
         id: 1,
         title: "Drink",
-        day: "2022-06-12",
+        date: "2022-06-12",
         completed: true
       },
       {
         id: 2,
         title: "Cricket",
-        day: "2022-06-12",
+        date: "2022-06-12",
         completed: false
       },
       {
         id: 3,
         title: "Outing",
-        day: "2022-06-12",
+        date: "2022-06-12",
         completed: true
       },
     ]
@@ -52,6 +55,9 @@ export default {
     },
     toggleCompleted(id){
       this.tasks = this.tasks.map((task) => task.id === id ? {...task , completed:!task.completed} : task)
+    },
+    addTask(task) {
+      this.tasks = [...this.tasks , task]
     }
   }
 }
