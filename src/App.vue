@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header title="Task Tracker"/>
-    <Tasks @delete-task="deleteTask" :tasks="tasks"/>
+    <Tasks @toggle-completed="toggleCompleted" @delete-task="deleteTask" :tasks="tasks"/>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     Header,
     Tasks
   },
-  emits: ["delete-task"],
+  emits: ["delete-task","toggle-completed"],
   data() {
     return {
       tasks : []
@@ -49,6 +49,9 @@ export default {
       if(confirm('Are you sure ?')) {
         this.tasks = this.tasks.filter((task) => task.id !== id)
       }
+    },
+    toggleCompleted(id){
+      this.tasks = this.tasks.map((task) => task.id === id ? {...task , completed:!task.completed} : task)
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div :class="[task.completed ? 'completed' : '' , 'task']">
+    <div @dblclick="$emit('toggle-completed' , task.id)" :class="[task.completed ? 'completed' : '' , 'task']">
         <h3>
         {{ task.title }}
         <i @click="onDelete(task.id)" class="fas fa-times"></i>
