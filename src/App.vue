@@ -30,24 +30,7 @@ export default {
   },
   created() {
     this.tasks = [
-      {
-        id: 1,
-        title: "Drink",
-        date: "2022-06-12",
-        completed: true
-      },
-      {
-        id: 2,
-        title: "Cricket",
-        date: "2022-06-12",
-        completed: false
-      },
-      {
-        id: 3,
-        title: "Outing",
-        date: "2022-06-12",
-        completed: true
-      },
+      
     ]
   },
   methods: {
