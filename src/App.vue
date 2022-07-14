@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header title="Task Tracker"/>
-    <Tasks :tasks="tasks"/>
+    <Tasks @delete-task="deleteTask" :tasks="tasks"/>
   </div>
 </template>
 
@@ -16,6 +16,7 @@ export default {
     Header,
     Tasks
   },
+  emits: ["delete-task"],
   data() {
     return {
       tasks : []
@@ -36,12 +37,19 @@ export default {
         completed: false
       },
       {
-        id: 1,
+        id: 3,
         title: "Outing",
         day: "2022-06-12",
         completed: true
       },
     ]
+  },
+  methods: {
+    deleteTask(id) {
+      if(confirm('Are you sure ?')) {
+        this.tasks = this.tasks.filter((task) => task.id !== id)
+      }
+    }
   }
 }
 </script>
