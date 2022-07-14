@@ -13,7 +13,7 @@ export default {
     },
     methods : {
         onClick() {
-            alert("I'm clicked")
+            this.$emit('toggle-form')
         }
     }
 }

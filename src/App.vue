@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <Header title="Task Tracker"/>
-    <AddTask @add-task="addTask"/>
+    <Header @toggle-form="toggleForm" title="Task Tracker" :showAddForm="showAddForm"/>
+      <div v-show="showAddForm">
+        <AddTask @add-task="addTask"/>
+      </div>
     <Tasks @toggle-completed="toggleCompleted" @delete-task="deleteTask" :tasks="tasks"/>
   </div>
 </template>
@@ -22,7 +24,8 @@ export default {
   emits: ["delete-task","toggle-completed",'add-task'],
   data() {
     return {
-      tasks : []
+      tasks : [],
+      showAddForm: false
     }
   },
   created() {
@@ -58,6 +61,9 @@ export default {
     },
     addTask(task) {
       this.tasks = [...this.tasks , task]
+    },
+    toggleForm() {
+      this.showAddForm = !this.showAddForm
     }
   }
 }
